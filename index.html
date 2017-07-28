@@ -132,7 +132,6 @@ transition: opacity 0.8s;
 
 
 
-
 </div>
 
 
@@ -149,7 +148,7 @@ d3.select(".archtext").style("color", "green");
 d3.select(".segtext").style("color", "red");
 d3.select("#bigfoot").style("color", "black");
 d3.select("#large").style("background", "white");
-d3.select("#large").append("svg").attr("height", 200).attr("width", 320);
+d3.select("#large").append("svg").attr("height", 200).attr("width", 320).attr("class", "card hoverable");
 d3.csv("sleep.csv", function(d) 
 	{
 		console.log(d);
