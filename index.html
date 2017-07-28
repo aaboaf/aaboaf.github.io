@@ -1,0 +1,161 @@
+<html>
+<head>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+body {
+color: black;
+background-color:white;
+}
+
+cav {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+}
+.column {
+  display: inline-block;
+  vertical-align: top;
+  width: 75%;
+}
+#intro{
+opacity:0;
+transition: opacity 0.8s;
+}
+.line {
+  border-left: thick solid #ff0000;
+}
+#Me{
+opacity:0;
+transition: opacity 0.8s;
+}
+#Me2{
+opacity:0;
+transition: opacity 0.8s;
+}
+#Me3{
+opacity:0;
+transition: opacity 0.8s;
+}
+#Contact{
+opacity:0;
+transition: opacity 0.8s;
+}
+
+#Large	{
+opacity:0;
+transition: opacity 0.8s;
+}
+
+</style>
+  <title>Albert Aboaf</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="d3.v3.js"></script>
+  
+ 
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+          
+          
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+    
+
+  
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col s3 left">
+
+<h3 id="intro">Hi, I'm <span class="text">Albert</span></h3>
+<p id="Me">I'm a rising second year in the Computer Science
+ program at the University of Chicago</p>
+<p id="Me2">I'm passionate about <span class="datatext">Data Vis</span>, <span class="archtext">Computer Architecture</span>, and <span class="segtext">Segfaults</span></p>
+<p id="Me3">Currently, I'm working at the Kavli Center for Cosmological Physics on a project for the LSST. I have work experience in web dev, IT, System Administration, and research</p>
+<div id="Contact"><p>You can find me in the following places</p>
+<p id="info"><br><u> <a href="mailto:aaboaf@uchicago.edu">email</a>	</u> &nbsp &nbsp &nbsp &nbsp <u><a href="https://github.com/aaboaf">github </a></u>&nbsp &nbsp	&nbsp &nbsp <u><a href="cv.pdf">resume</a></u>
+<br 	><u><a href="https://www.facebook.com/albert.aboaf">facebook</a></u> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <u><a href="https://www.linkedin.com/in/albert-aboaf-569b599b/">linkedin</a></u></p>
+</div>
+
+</div>
+  
+<div class="col s8 left offset-s1" id="large">
+
+	
+
+
+  <div class="row">
+
+    <div class="col s12 m6 ">
+      <div class="card hoverable">
+        <div class="card-image">
+          <img src="bigfoot.jpg">
+          <span class="card-title">Bigfoot</span>
+        
+        </div>
+        <div class="card-content">
+          <p id="bigfoot">I put together a simple map in d3 to show the distribution of bigfoot sightings around the US and Canada. Open the image in a new tab to see the full size map.</p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="col s12 m6 ">
+      <div class="card hoverable">
+        <div class="card-image">
+          <img src="LSST.png">
+          <span class="card-title">	</span>
+        
+        </div>
+        <div class="card-content">
+          <p id="bigfoot">I´ve spent the summer of 2017 working at the Kavli Center for Cosmological Physics on sort-of-secret project for the Large Scale Synoptic Telescope.</p>
+        </div>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+</div>
+
+
+<script>
+
+d3.select(".text").style("color", "maroon");
+d3.select("#info").style("color", "Grey");
+d3.select(".datatext").style("color", "blue");
+d3.select(".archtext").style("color", "green");
+d3.select(".segtext").style("color", "red");
+d3.select("#bigfoot").style("color", "black");
+d3.select("#large").style("background", "white");
+
+function showText(id, delay) {
+    var elem = document.getElementById(id);
+    setTimeout(function () {
+        elem.style.opacity = 1;
+    }, delay * 1000)
+}
+window.onload = function () {
+    showText('intro', 1);
+    showText('Me', 2);
+    showText('Me2', 3);
+    showText('Me3', 4);
+    showText('Contact', 5);
+    showText('large', 6);
+}
+</script>
+</body>
+</html>
