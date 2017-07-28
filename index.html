@@ -10,7 +10,15 @@ body {
 color: black;
 background-color:white;
 }
-
+.axis line{
+	stroke: black;
+}
+.axis path{
+	stroke: black;
+}
+.axis text{
+	stroke: Black;
+}
 cav {
   display: inline-block;
   vertical-align: top;
@@ -52,7 +60,7 @@ transition: opacity 0.8s;
 
 </style>
   <title>Albert Aboaf</title>
-  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="d3.v3.js"></script>
   
  
@@ -114,7 +122,7 @@ transition: opacity 0.8s;
         
         </div>
         <div class="card-content">
-          <p id="bigfoot">I´ve spent the summer of 2017 working at the Kavli Center for Cosmological Physics on sort-of-secret project for the Large Scale Synoptic Telescope.</p>
+          <p id="bigfoot">I've spent the summer of 2017 working at the Kavli Center for Cosmological Physics on sort-of-secret project for the Large Scale Synoptic Telescope.</p>
         </div>
       </div>
     
@@ -141,7 +149,61 @@ d3.select(".archtext").style("color", "green");
 d3.select(".segtext").style("color", "red");
 d3.select("#bigfoot").style("color", "black");
 d3.select("#large").style("background", "white");
-
+d3.select("#large").append("svg").attr("height", 200).attr("width", 320);
+d3.csv("sleep.csv", function(d) 
+	{
+		console.log(d);
+		d.date = d.Date;
+		d.hour= +d.Hours	;
+		
+	//console.log(d.name);
+		return d;
+	}, function(error, Data)
+	{
+	var svg = d3.select("svg");
+	var x = d3.scaleBand().rangeRound([0, 300]);
+ var 	       y = d3.scaleLinear().rangeRound([170, 0]);
+ var height = d3.select("svg").node().getBoundingClientRect().height - 25;
+ var width= d3.select("svg").node().getBoundingClientRect().width;
+ 
+ 
+var line = d3.line()
+						.x(function(d) {return x(d.Date);})
+						.y(function(d) {return y(d.Hours);});
+var goalLine = d3.line()
+								.x(function(d) {return x(d.Date);})
+								.y(4);
+x.domain(Data.map(function(d) {return d.Date;}));
+	 y.domain(d3.extent(Data, function(d) {return d.Hours;}));
+	      svg.append("text").text("Hours of Sleep I Get Per Night").attr("transform", "translate(45, 13)");
+	      
+	      svg.append("g").attr("class", "axis")
+	      .attr("transform", "translate(0," + height + ")")
+	      .call(d3.axisBottom(x))
+	      .append("text").attr("y", 145).text("Date");
+	       
+	       svg.append("g")
+	       .attr("class","axis").attr("transform", "translate(30,5)")
+	       .call(d3.axisLeft(y))
+	       .append("text")
+	       .attr("transform", "translate(0,0) rotate(-90)")
+	       .attr("y", 6)
+	       .attr("dy", "0.71em")
+				 .attr("text-anchor", "end")
+				 .text("Hours	");
+				 
+				 svg.append("path")
+				 .datum(Data)
+				 .attr("fill", "none")
+				 .attr("stroke", "maroon")
+				 .attr("stroke-linejin", "round")
+				 .attr("stroke-linecap", "round")
+				 .attr("stroke-width", 1.5)
+				 .attr("d",line)
+				 .attr("class","axis").attr("transform", "translate(30,5)");
+				
+	       });
+	      
 function showText(id, delay) {
     var elem = document.getElementById(id);
     setTimeout(function () {
